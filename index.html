@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Bet Bicho - Sistema de Apostas</title>
+    <title>Site Responsivo</title>
     <style>
         /* ========== RESET E VARIÁVEIS ========== */
         * {
@@ -13,38 +13,43 @@
         }
 
         :root {
-            --primary-color: #ff6b00;
-            --secondary-color: #1a2a3a;
-            --accent-color: #ffd700;
-            --success-color: #28a745;
-            --danger-color: #dc3545;
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
             --text-color: #333;
-            --light-bg: #f8f9fa;
+            --light-bg: #f5f5f5;
             --white: #ffffff;
             --shadow: 0 2px 10px rgba(0,0,0,0.1);
-            --border-radius: 12px;
+            --border-radius: 8px;
             --transition: all 0.3s ease;
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
         }
 
+        /* ========== LAYOUT PRINCIPAL ========== */
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px;
         }
 
         /* ========== HEADER ========== */
         .header {
-            background: var(--white);
-            border-radius: var(--border-radius);
-            padding: 1rem;
-            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
             box-shadow: var(--shadow);
+        }
+
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -53,545 +58,497 @@
         }
 
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .logo-icon {
-            font-size: 2rem;
-        }
-
-        .logo h1 {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-        }
-
-        .logo p {
-            font-size: 0.8rem;
-            color: var(--secondary-color);
-        }
-
-        .saldo {
-            background: linear-gradient(135deg, var(--primary-color), #ff8c00);
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
-            color: var(--white);
-            text-align: center;
-        }
-
-        .saldo-label {
-            font-size: 0.8rem;
-            opacity: 0.9;
-        }
-
-        .saldo-valor {
             font-size: 1.5rem;
             font-weight: bold;
         }
 
-        /* ========== GRID PRINCIPAL ========== */
-        .main-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 1.5rem;
+        .logo a {
+            color: var(--white);
+            text-decoration: none;
         }
 
-        /* ========== SEÇÃO DE APOSTAS ========== */
-        .apostas-section {
-            background: var(--white);
-            border-radius: var(--border-radius);
-            padding: 1.2rem;
-            box-shadow: var(--shadow);
+        /* ========== MENU NAVEGAÇÃO ========== */
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
         }
 
-        .section-title {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: var(--secondary-color);
-            border-left: 4px solid var(--primary-color);
-            padding-left: 0.8rem;
-        }
-
-        .bicho-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0.8rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .bicho-btn {
-            background: var(--light-bg);
-            border: 2px solid #e0e0e0;
-            padding: 0.8rem 0.5rem;
-            border-radius: var(--border-radius);
-            cursor: pointer;
+        .nav-menu a {
+            color: var(--white);
+            text-decoration: none;
             transition: var(--transition);
-            text-align: center;
             font-weight: 500;
         }
 
-        .bicho-btn:hover {
-            border-color: var(--primary-color);
+        .nav-menu a:hover {
+            color: var(--accent-color);
             transform: translateY(-2px);
         }
 
-        .bicho-btn.selected {
-            background: var(--primary-color);
-            border-color: var(--primary-color);
+        /* Menu Mobile */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
             color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
         }
 
-        .valor-group {
-            margin: 1rem 0;
+        /* ========== CONTEÚDO PRINCIPAL ========== */
+        .main-content {
+            padding: 2rem 0;
         }
 
-        .valor-group label {
+        /* Grid Responsivo */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+
+        /* ========== FORMULÁRIO ========== */
+        .form-container {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin: 2rem 0;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 500;
         }
 
-        .valor-input {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .valor-input input {
-            flex: 1;
-            padding: 0.8rem;
-            border: 2px solid #e0e0e0;
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
             border-radius: var(--border-radius);
             font-size: 1rem;
+            transition: var(--transition);
         }
 
-        .btn-apostar {
-            width: 100%;
-            background: linear-gradient(135deg, var(--primary-color), #ff8c00);
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary-color);
             color: var(--white);
             border: none;
-            padding: 1rem;
             border-radius: var(--border-radius);
-            font-size: 1.1rem;
-            font-weight: bold;
             cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
             transition: var(--transition);
-            margin-top: 1rem;
+            text-decoration: none;
         }
 
-        .btn-apostar:hover {
+        .btn:hover {
+            background: var(--secondary-color);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255,107,0,0.3);
         }
 
-        /* ========== SEÇÃO DE RESULTADOS ========== */
-        .resultados-section {
+        /* ========== TABELAS ========== */
+        .table-responsive {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
             background: var(--white);
             border-radius: var(--border-radius);
-            padding: 1.2rem;
+            overflow: hidden;
             box-shadow: var(--shadow);
         }
 
-        .ultimo-sorteio {
-            background: linear-gradient(135deg, var(--secondary-color), #2c3e50);
-            color: var(--white);
+        .data-table th,
+        .data-table td {
             padding: 1rem;
-            border-radius: var(--border-radius);
-            text-align: center;
-            margin-bottom: 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
         }
 
-        .numero-sorteado {
-            font-size: 3rem;
-            font-weight: bold;
-            margin: 0.5rem 0;
+        .data-table th {
+            background: var(--secondary-color);
+            color: var(--white);
+            font-weight: 500;
         }
 
-        .bicho-sorteado {
-            font-size: 1.2rem;
-            background: var(--primary-color);
-            display: inline-block;
-            padding: 0.3rem 1rem;
-            border-radius: 50px;
-        }
-
-        .lista-apostas {
-            max-height: 400px;
-            overflow-y: auto;
-        }
-
-        .aposta-item {
+        .data-table tr:hover {
             background: var(--light-bg);
-            padding: 0.8rem;
-            margin-bottom: 0.5rem;
-            border-radius: var(--border-radius);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 0.5rem;
         }
 
-        .aposta-info {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .aposta-bicho {
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        .aposta-valor {
-            color: var(--success-color);
-            font-weight: bold;
-        }
-
-        .aposta-status {
-            padding: 0.2rem 0.6rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-
-        .status-pendente {
-            background: #ffc107;
-            color: #000;
-        }
-
-        .status-ganhou {
-            background: var(--success-color);
+        /* ========== FOOTER ========== */
+        .footer {
+            background: var(--secondary-color);
             color: var(--white);
-        }
-
-        .status-perdeu {
-            background: var(--danger-color);
-            color: var(--white);
-        }
-
-        /* ========== MENU MOBILE ========== */
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
         }
 
         /* ========== MEDIA QUERIES ========== */
+        /* Tablet */
         @media (max-width: 768px) {
-            body {
-                padding: 10px;
+            .container {
+                padding: 0 15px;
             }
 
-            .main-grid {
-                grid-template-columns: 1fr;
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem 0;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .header-content {
+                flex-wrap: wrap;
+            }
+
+            .grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
                 gap: 1rem;
             }
+        }
 
-            .bicho-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 0.6rem;
+        /* Mobile */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 10px;
             }
 
-            .bicho-btn {
-                padding: 0.6rem 0.3rem;
-                font-size: 0.9rem;
+            .logo {
+                font-size: 1.25rem;
             }
 
-            .header {
-                flex-direction: column;
+            .card-title {
+                font-size: 1.1rem;
+            }
+
+            .btn {
+                width: 100%;
                 text-align: center;
             }
 
-            .saldo {
-                width: 100%;
+            .form-container {
+                padding: 1rem;
+            }
+
+            .data-table th,
+            .data-table td {
+                padding: 0.75rem;
+                font-size: 0.9rem;
             }
         }
 
-        @media (max-width: 480px) {
-            .bicho-grid {
-                grid-template-columns: repeat(2, 1fr);
+        /* Telas muito pequenas */
+        @media (max-width: 320px) {
+            .card-image {
+                height: 150px;
             }
 
-            .aposta-info {
-                flex-direction: column;
-                gap: 0.3rem;
-            }
-
-            .numero-sorteado {
-                font-size: 2rem;
+            .card-content {
+                padding: 1rem;
             }
         }
 
-        /* Scrollbar personalizada */
-        .lista-apostas::-webkit-scrollbar {
-            width: 6px;
-        }
+        /* Impressão */
+        @media print {
+            .header,
+            .footer,
+            .menu-toggle,
+            .btn {
+                display: none;
+            }
 
-        .lista-apostas::-webkit-scrollbar-track {
-            background: var(--light-bg);
-            border-radius: 10px;
-        }
+            body {
+                background: white;
+            }
 
-        .lista-apostas::-webkit-scrollbar-thumb {
-            background: var(--primary-color);
-            border-radius: 10px;
+            .card {
+                break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <div class="logo">
-                <div class="logo-icon">🐔</div>
-                <div>
-                    <h1>Bet Bicho</h1>
-                    <p>Sistema de Apostas</p>
-                </div>
-            </div>
-            <div class="saldo">
-                <div class="saldo-label">Saldo Disponível</div>
-                <div class="saldo-valor" id="saldoValor">R$ 1.000,00</div>
-            </div>
-        </div>
-
-        <!-- Grid Principal -->
-        <div class="main-grid">
-            <!-- Seção de Apostas -->
-            <div class="apostas-section">
-                <h2 class="section-title">Fazer Aposta</h2>
-                <div class="bicho-grid" id="bichoGrid"></div>
-                
-                <div class="valor-group">
-                    <label>Valor da Aposta</label>
-                    <div class="valor-input">
-                        <input type="number" id="valorAposta" placeholder="R$ 10,00" min="1" step="1">
-                    </div>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="#">MeuSite</a>
                 </div>
                 
-                <button class="btn-apostar" id="btnApostar">🎲 FAZER APOSTA</button>
-            </div>
-
-            <!-- Seção de Resultados -->
-            <div class="resultados-section">
-                <h2 class="section-title">Último Sorteio</h2>
-                <div class="ultimo-sorteio" id="ultimoSorteio">
-                    <div>Aguardando sorteio...</div>
-                </div>
+                <button class="menu-toggle" aria-label="Menu">
+                    ☰
+                </button>
                 
-                <h2 class="section-title">Minhas Apostas</h2>
-                <div class="lista-apostas" id="listaApostas">
-                    <div style="text-align: center; padding: 2rem; color: #999;">
-                        Nenhuma aposta realizada
-                    </div>
-                </div>
-                
-                <button class="btn-apostar" id="btnSortear" style="background: linear-gradient(135deg, var(--secondary-color), #2c3e50); margin-top: 1rem;">🎯 REALIZAR SORTEIO</button>
+                <ul class="nav-menu">
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
             </div>
         </div>
-    </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- Seção Hero -->
+            <section id="home">
+                <div class="form-container" style="text-align: center; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white;">
+                    <h1>Bem-vindo ao Site Responsivo</h1>
+                    <p>Design adaptável para todos os dispositivos</p>
+                    <button class="btn" style="background: white; color: var(--primary-color); margin-top: 1rem;">Saiba Mais</button>
+                </div>
+            </section>
+
+            <!-- Grid de Cards -->
+            <section id="servicos">
+                <h2>Nossos Serviços</h2>
+                <div class="grid">
+                    <div class="card">
+                        <div class="card-image"></div>
+                        <div class="card-content">
+                            <h3 class="card-title">Design Responsivo</h3>
+                            <p>Layouts que se adaptam perfeitamente a qualquer tamanho de tela, proporcionando a melhor experiência do usuário.</p>
+                            <button class="btn" style="margin-top: 1rem;">Saiba mais</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-image"></div>
+                        <div class="card-content">
+                            <h3 class="card-title">Performance</h3>
+                            <p>Código otimizado para carregamento rápido em qualquer dispositivo e conexão de internet.</p>
+                            <button class="btn" style="margin-top: 1rem;">Saiba mais</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-image"></div>
+                        <div class="card-content">
+                            <h3 class="card-title">Acessibilidade</h3>
+                            <p>Desenvolvido seguindo as melhores práticas de acessibilidade para todos os usuários.</p>
+                            <button class="btn" style="margin-top: 1rem;">Saiba mais</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Formulário -->
+            <section id="contato">
+                <h2>Contato</h2>
+                <div class="form-container">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="nome">Nome:</label>
+                            <input type="text" id="nome" name="nome" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">E-mail:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="assunto">Assunto:</label>
+                            <select id="assunto" name="assunto">
+                                <option value="duvida">Dúvida</option>
+                                <option value="sugestao">Sugestão</option>
+                                <option value="reclamacao">Reclamação</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="mensagem">Mensagem:</label>
+                            <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Tabela Responsiva -->
+            <section>
+                <h2>Dados Exemplo</h2>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>E-mail</th>
+                                <th>Status</th>
+                                <th>Data</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>João Silva</td><td>joao@email.com</td><td>Ativo</td><td>2024-01-15</td></tr>
+                            <tr><td>2</td><td>Maria Santos</td><td>maria@email.com</td><td>Ativo</td><td>2024-01-16</td></tr>
+                            <tr><td>3</td><td>Pedro Oliveira</td><td>pedro@email.com</td><td>Inativo</td><td>2024-01-17</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 MeuSite Responsivo. Todos os direitos reservados.</p>
+            <p>Design adaptável para todos os dispositivos</p>
+        </div>
+    </footer>
 
     <script>
-        // Dados dos bichos
-        const bichos = [
-            "Avestruz", "Águia", "Burro", "Borboleta", "Cachorro",
-            "Cabra", "Carneiro", "Camelo", "Cobra", "Coelho",
-            "Cavalo", "Elefante", "Galo", "Gato", "Jacaré",
-            "Leão", "Macaco", "Porco", "Pavão", "Peru",
-            "Touro", "Tigre", "Urso", "Veado", "Vaca"
-        ];
+        // Menu Mobile Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
 
-        // Estado do aplicativo
-        let saldo = 1000;
-        let apostaSelecionada = null;
-        let apostas = [];
-        let ultimoSorteio = null;
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                
+                // Mudar ícone do menu
+                const isActive = navMenu.classList.contains('active');
+                menuToggle.textContent = isActive ? '✕' : '☰';
+            });
 
-        // Elementos DOM
-        const bichoGrid = document.getElementById('bichoGrid');
-        const saldoValor = document.getElementById('saldoValor');
-        const valorAposta = document.getElementById('valorAposta');
-        const btnApostar = document.getElementById('btnApostar');
-        const btnSortear = document.getElementById('btnSortear');
-        const listaApostas = document.getElementById('listaApostas');
-        const ultimoSorteioDiv = document.getElementById('ultimoSorteio');
-
-        // Renderizar grid de bichos
-        function renderBichos() {
-            bichoGrid.innerHTML = '';
-            bichos.forEach(bicho => {
-                const btn = document.createElement('button');
-                btn.className = 'bicho-btn';
-                btn.textContent = bicho;
-                btn.onclick = () => selecionarBicho(bicho);
-                bichoGrid.appendChild(btn);
+            // Fechar menu ao clicar em um link
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    menuToggle.textContent = '☰';
+                });
             });
         }
 
-        // Selecionar bicho
-        function selecionarBicho(bicho) {
-            document.querySelectorAll('.bicho-btn').forEach(btn => {
-                if (btn.textContent === bicho) {
-                    btn.classList.add('selected');
+        // Formulário de Contato
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Validação simples
+                const nome = document.getElementById('nome').value;
+                const email = document.getElementById('email').value;
+                const mensagem = document.getElementById('mensagem').value;
+                
+                if (nome && email && mensagem) {
+                    alert('Mensagem enviada com sucesso!');
+                    contactForm.reset();
                 } else {
-                    btn.classList.remove('selected');
+                    alert('Por favor, preencha todos os campos obrigatórios.');
                 }
             });
-            apostaSelecionada = bicho;
         }
 
-        // Fazer aposta
-        function fazerAposta() {
-            if (!apostaSelecionada) {
-                alert('Selecione um bicho para apostar!');
-                return;
-            }
+        // Scroll suave para links âncora
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
 
-            const valor = parseFloat(valorAposta.value);
-            if (isNaN(valor) || valor <= 0) {
-                alert('Digite um valor válido para a aposta!');
-                return;
-            }
-
-            if (valor > saldo) {
-                alert('Saldo insuficiente!');
-                return;
-            }
-
-            // Registrar aposta
-            const aposta = {
-                id: Date.now(),
-                bicho: apostaSelecionada,
-                valor: valor,
-                data: new Date().toLocaleString(),
-                status: 'pendente',
-                resultado: null
-            };
-
-            apostas.push(aposta);
-            saldo -= valor;
-            atualizarSaldo();
-            renderizarApostas();
+        // Detectar dispositivo e aplicar classes específicas
+        function detectDevice() {
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            const isTablet = /iPad|Android/i.test(navigator.userAgent) && window.innerWidth >= 768 && window.innerWidth <= 1024;
             
-            // Limpar seleção
-            apostaSelecionada = null;
-            valorAposta.value = '';
-            document.querySelectorAll('.bicho-btn').forEach(btn => {
-                btn.classList.remove('selected');
-            });
-
-            alert(`Aposta no ${aposta.bicho} no valor de R$ ${valor.toFixed(2)} realizada com sucesso!`);
-        }
-
-        // Realizar sorteio
-        function realizarSorteio() {
-            if (apostas.length === 0) {
-                alert('Não há apostas para sortear!');
-                return;
-            }
-
-            // Sortear bicho aleatório
-            const indiceSorteado = Math.floor(Math.random() * bichos.length);
-            const bichoSorteado = bichos[indiceSorteado];
-            const numeroSorteado = (indiceSorteado + 1) * 100;
-
-            ultimoSorteio = {
-                bicho: bichoSorteado,
-                numero: numeroSorteado,
-                data: new Date().toLocaleString()
-            };
-
-            // Atualizar resultados das apostas
-            let ganhosTotais = 0;
-            apostas.forEach(aposta => {
-                if (aposta.status === 'pendente') {
-                    if (aposta.bicho === bichoSorteado) {
-                        aposta.status = 'ganhou';
-                        const premio = aposta.valor * 20; // Prêmio de 20x o valor
-                        ganhosTotais += premio;
-                        aposta.resultado = `Ganhou R$ ${premio.toFixed(2)}`;
-                    } else {
-                        aposta.status = 'perdeu';
-                        aposta.resultado = 'Perdeu';
-                    }
-                }
-            });
-
-            // Adicionar ganhos ao saldo
-            if (ganhosTotais > 0) {
-                saldo += ganhosTotais;
-                atualizarSaldo();
-                alert(`🎉 Parabéns! Você ganhou R$ ${ganhosTotais.toFixed(2)}!`);
-            }
-
-            renderizarUltimoSorteio();
-            renderizarApostas();
-        }
-
-        // Renderizar último sorteio
-        function renderizarUltimoSorteio() {
-            if (ultimoSorteio) {
-                ultimoSorteioDiv.innerHTML = `
-                    <div>📅 ${ultimoSorteio.data}</div>
-                    <div class="numero-sorteado">${ultimoSorteio.numero}</div>
-                    <div class="bicho-sorteado">🐔 ${ultimoSorteio.bicho}</div>
-                `;
+            if (isMobile) {
+                document.body.classList.add('mobile-device');
+            } else if (isTablet) {
+                document.body.classList.add('tablet-device');
             } else {
-                ultimoSorteioDiv.innerHTML = `
-                    <div>Aguardando sorteio...</div>
-                `;
+                document.body.classList.add('desktop-device');
             }
         }
-
-        // Renderizar lista de apostas
-        function renderizarApostas() {
-            if (apostas.length === 0) {
-                listaApostas.innerHTML = '<div style="text-align: center; padding: 2rem; color: #999;">Nenhuma aposta realizada</div>';
-                return;
-            }
-
-            listaApostas.innerHTML = '';
-            apostas.reverse().forEach(aposta => {
-                const div = document.createElement('div');
-                div.className = 'aposta-item';
-                
-                let statusClass = '';
-                if (aposta.status === 'pendente') statusClass = 'status-pendente';
-                else if (aposta.status === 'ganhou') statusClass = 'status-ganhou';
-                else if (aposta.status === 'perdeu') statusClass = 'status-perdeu';
-                
-                div.innerHTML = `
-                    <div class="aposta-info">
-                        <span class="aposta-bicho">🐔 ${aposta.bicho}</span>
-                        <span class="aposta-valor">R$ ${aposta.valor.toFixed(2)}</span>
-                        <span>${aposta.data}</span>
-                    </div>
-                    <div class="aposta-status ${statusClass}">
-                        ${aposta.status === 'pendente' ? '⏳ Pendente' : aposta.status === 'ganhou' ? '🎉 Ganhou!' : '❌ Perdeu'}
-                    </div>
-                    ${aposta.resultado ? `<div><small>${aposta.resultado}</small></div>` : ''}
-                `;
-                listaApostas.appendChild(div);
-            });
-        }
-
-        // Atualizar saldo
-        function atualizarSaldo() {
-            saldoValor.textContent = `R$ ${saldo.toFixed(2)}`;
-        }
-
-        // Event listeners
-        btnApostar.addEventListener('click', fazerAposta);
-        btnSortear.addEventListener('click', realizarSorteio);
-
-        // Inicializar
-        renderBichos();
-        renderizarApostas();
-        atualizarSaldo();
+        
+        detectDevice();
+        
+        // Redimensionamento da janela
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                // Recarregar classes de dispositivo se necessário
+                document.body.classList.remove('mobile-device', 'tablet-device', 'desktop-device');
+                detectDevice();
+            }, 250);
+        });
     </script>
 </body>
 </html>
