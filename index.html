@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Site Responsivo</title>
+    <title>Site Responsivo - Layout Otimizado</title>
     <style>
         /* ========== RESET E VARIÁVEIS ========== */
         * {
@@ -26,14 +26,14 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+            line-height: 1.5;
             color: var(--text-color);
             background-color: var(--light-bg);
         }
 
         /* ========== LAYOUT PRINCIPAL ========== */
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
         }
@@ -42,7 +42,7 @@
         .header {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: var(--white);
-            padding: 1rem 0;
+            padding: 0.8rem 0;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -53,12 +53,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
             gap: 1rem;
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: bold;
         }
 
@@ -67,10 +66,9 @@
             text-decoration: none;
         }
 
-        /* ========== MENU NAVEGAÇÃO ========== */
         .nav-menu {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             list-style: none;
         }
 
@@ -79,14 +77,13 @@
             text-decoration: none;
             transition: var(--transition);
             font-weight: 500;
+            font-size: 0.95rem;
         }
 
         .nav-menu a:hover {
             color: var(--accent-color);
-            transform: translateY(-2px);
         }
 
-        /* Menu Mobile */
         .menu-toggle {
             display: none;
             background: none;
@@ -94,20 +91,46 @@
             color: var(--white);
             font-size: 1.5rem;
             cursor: pointer;
-            padding: 0.5rem;
         }
 
-        /* ========== CONTEÚDO PRINCIPAL ========== */
-        .main-content {
-            padding: 2rem 0;
+        /* ========== HERO SECTION ========== */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin: 1rem 0;
+            text-align: center;
         }
 
-        /* Grid Responsivo */
-        .grid {
+        .hero h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        /* ========== SEÇÕES ========== */
+        .section {
+            margin: 1.5rem 0;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+            border-left: 4px solid var(--primary-color);
+            padding-left: 1rem;
+        }
+
+        /* Grid Cards - Melhor distribuição */
+        .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.2rem;
         }
 
         .card {
@@ -116,57 +139,74 @@
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
+            display: flex;
+            flex-direction: column;
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .card-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
+            height: 160px;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            position: relative;
         }
 
         .card-content {
-            padding: 1.5rem;
+            padding: 1.2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .card-title {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             margin-bottom: 0.5rem;
             color: var(--secondary-color);
         }
 
-        /* ========== FORMULÁRIO ========== */
+        .card-text {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            flex: 1;
+        }
+
+        /* Formulário compacto */
         .form-container {
             background: var(--white);
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
-            margin: 2rem 0;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
         }
 
         .form-group {
-            margin-bottom: 1rem;
+            margin-bottom: 0;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
             font-weight: 500;
+            font-size: 0.9rem;
         }
 
         .form-group input,
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 0.75rem;
+            padding: 0.6rem;
             border: 1px solid #ddd;
             border-radius: var(--border-radius);
-            font-size: 1rem;
+            font-size: 0.9rem;
             transition: var(--transition);
         }
 
@@ -175,32 +215,30 @@
         .form-group select:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
         }
 
         .btn {
             display: inline-block;
-            padding: 0.75rem 1.5rem;
+            padding: 0.6rem 1.2rem;
             background: var(--primary-color);
             color: var(--white);
             border: none;
             border-radius: var(--border-radius);
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 500;
             transition: var(--transition);
-            text-decoration: none;
+            text-align: center;
         }
 
         .btn:hover {
             background: var(--secondary-color);
-            transform: translateY(-2px);
         }
 
-        /* ========== TABELAS ========== */
+        /* Tabela compacta */
         .table-responsive {
             overflow-x: auto;
-            margin: 2rem 0;
+            margin: 1rem 0;
         }
 
         .data-table {
@@ -210,13 +248,14 @@
             border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: var(--shadow);
+            font-size: 0.9rem;
         }
 
         .data-table th,
         .data-table td {
-            padding: 1rem;
+            padding: 0.8rem;
             text-align: left;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid #eee;
         }
 
         .data-table th {
@@ -229,17 +268,45 @@
             background: var(--light-bg);
         }
 
-        /* ========== FOOTER ========== */
+        /* Estatísticas */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .stat-card {
+            background: var(--white);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-color);
+            margin-top: 0.3rem;
+        }
+
+        /* Footer compacto */
         .footer {
             background: var(--secondary-color);
             color: var(--white);
             text-align: center;
-            padding: 2rem 0;
-            margin-top: 3rem;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+            font-size: 0.85rem;
         }
 
         /* ========== MEDIA QUERIES ========== */
-        /* Tablet */
         @media (max-width: 768px) {
             .container {
                 padding: 0 15px;
@@ -253,8 +320,9 @@
                 display: none;
                 width: 100%;
                 flex-direction: column;
-                gap: 1rem;
+                gap: 0.8rem;
                 padding: 1rem 0;
+                text-align: center;
             }
 
             .nav-menu.active {
@@ -265,70 +333,67 @@
                 flex-wrap: wrap;
             }
 
-            .grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            .hero {
+                padding: 1.5rem;
+                margin: 0.5rem 0;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .cards-grid {
                 gap: 1rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+
+            .section {
+                margin: 1rem 0;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
             }
         }
 
-        /* Mobile */
         @media (max-width: 480px) {
             .container {
-                padding: 0 10px;
+                padding: 0 12px;
             }
 
-            .logo {
-                font-size: 1.25rem;
-            }
-
-            .card-title {
-                font-size: 1.1rem;
-            }
-
-            .btn {
-                width: 100%;
-                text-align: center;
-            }
-
-            .form-container {
+            .hero {
                 padding: 1rem;
             }
 
-            .data-table th,
-            .data-table td {
-                padding: 0.75rem;
-                font-size: 0.9rem;
+            .hero h1 {
+                font-size: 1.3rem;
             }
-        }
 
-        /* Telas muito pequenas */
-        @media (max-width: 320px) {
             .card-image {
-                height: 150px;
+                height: 140px;
             }
 
             .card-content {
                 padding: 1rem;
             }
-        }
 
-        /* Impressão */
-        @media print {
-            .header,
-            .footer,
-            .menu-toggle,
-            .btn {
-                display: none;
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
             }
 
-            body {
-                background: white;
+            .stat-number {
+                font-size: 1.5rem;
             }
 
-            .card {
-                break-inside: avoid;
-                box-shadow: none;
-                border: 1px solid #ddd;
+            .data-table th,
+            .data-table td {
+                padding: 0.6rem;
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -341,50 +406,46 @@
                     <a href="#">MeuSite</a>
                 </div>
                 
-                <button class="menu-toggle" aria-label="Menu">
-                    ☰
-                </button>
+                <button class="menu-toggle" aria-label="Menu">☰</button>
                 
                 <ul class="nav-menu">
                     <li><a href="#home">Início</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
                     <li><a href="#servicos">Serviços</a></li>
                     <li><a href="#contato">Contato</a></li>
+                    <li><a href="#dados">Dados</a></li>
                 </ul>
             </div>
         </div>
     </header>
 
-    <main class="main-content">
+    <main>
         <div class="container">
-            <!-- Seção Hero -->
-            <section id="home">
-                <div class="form-container" style="text-align: center; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white;">
-                    <h1>Bem-vindo ao Site Responsivo</h1>
-                    <p>Design adaptável para todos os dispositivos</p>
-                    <button class="btn" style="background: white; color: var(--primary-color); margin-top: 1rem;">Saiba Mais</button>
-                </div>
-            </section>
+            <!-- Hero Section -->
+            <div class="hero" id="home">
+                <h1>Bem-vindo ao Site Responsivo</h1>
+                <p>Layout otimizado com melhor distribuição de espaço</p>
+                <button class="btn" style="background: white; color: var(--primary-color);">Começar</button>
+            </div>
 
-            <!-- Grid de Cards -->
-            <section id="servicos">
-                <h2>Nossos Serviços</h2>
-                <div class="grid">
+            <!-- Cards de Serviços -->
+            <section class="section" id="servicos">
+                <h2 class="section-title">Nossos Serviços</h2>
+                <div class="cards-grid">
                     <div class="card">
                         <div class="card-image"></div>
                         <div class="card-content">
                             <h3 class="card-title">Design Responsivo</h3>
-                            <p>Layouts que se adaptam perfeitamente a qualquer tamanho de tela, proporcionando a melhor experiência do usuário.</p>
-                            <button class="btn" style="margin-top: 1rem;">Saiba mais</button>
+                            <p class="card-text">Layouts adaptáveis para todos os dispositivos</p>
+                            <button class="btn">Saiba mais</button>
                         </div>
                     </div>
                     
                     <div class="card">
                         <div class="card-image"></div>
                         <div class="card-content">
-                            <h3 class="card-title">Performance</h3>
-                            <p>Código otimizado para carregamento rápido em qualquer dispositivo e conexão de internet.</p>
-                            <button class="btn" style="margin-top: 1rem;">Saiba mais</button>
+                            <h3 class="card-title">Otimização</h3>
+                            <p class="card-text">Código otimizado e carregamento rápido</p>
+                            <button class="btn">Saiba mais</button>
                         </div>
                     </div>
                     
@@ -392,40 +453,69 @@
                         <div class="card-image"></div>
                         <div class="card-content">
                             <h3 class="card-title">Acessibilidade</h3>
-                            <p>Desenvolvido seguindo as melhores práticas de acessibilidade para todos os usuários.</p>
-                            <button class="btn" style="margin-top: 1rem;">Saiba mais</button>
+                            <p class="card-text">Melhores práticas para todos os usuários</p>
+                            <button class="btn">Saiba mais</button>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Formulário -->
-            <section id="contato">
-                <h2>Contato</h2>
+            <!-- Estatísticas -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">Clientes Atendidos</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Satisfação</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Suporte</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Projetos</div>
+                </div>
+            </div>
+
+            <!-- Formulário Compacto -->
+            <section class="section" id="contato">
+                <h2 class="section-title">Contato</h2>
                 <div class="form-container">
                     <form id="contactForm">
-                        <div class="form-group">
-                            <label for="nome">Nome:</label>
-                            <input type="text" id="nome" name="nome" required>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nome">Nome</label>
+                                <input type="text" id="nome" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">E-mail</label>
+                                <input type="email" id="email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="telefone">Telefone</label>
+                                <input type="tel" id="telefone">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="assunto">Assunto</label>
+                                <select id="assunto">
+                                    <option value="duvida">Dúvida</option>
+                                    <option value="sugestao">Sugestão</option>
+                                    <option value="orcamento">Orçamento</option>
+                                </select>
+                            </div>
                         </div>
                         
                         <div class="form-group">
-                            <label for="email">E-mail:</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="assunto">Assunto:</label>
-                            <select id="assunto" name="assunto">
-                                <option value="duvida">Dúvida</option>
-                                <option value="sugestao">Sugestão</option>
-                                <option value="reclamacao">Reclamação</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="mensagem">Mensagem:</label>
-                            <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+                            <label for="mensagem">Mensagem</label>
+                            <textarea id="mensagem" rows="3" required></textarea>
                         </div>
                         
                         <button type="submit" class="btn">Enviar Mensagem</button>
@@ -433,24 +523,38 @@
                 </div>
             </section>
 
-            <!-- Tabela Responsiva -->
-            <section>
-                <h2>Dados Exemplo</h2>
+            <!-- Tabela de Dados -->
+            <section class="section" id="dados">
+                <h2 class="section-title">Últimos Projetos</h2>
                 <div class="table-responsive">
                     <table class="data-table">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Nome</th>
-                                <th>E-mail</th>
+                                <th>Projeto</th>
+                                <th>Cliente</th>
                                 <th>Status</th>
                                 <th>Data</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td>1</td><td>João Silva</td><td>joao@email.com</td><td>Ativo</td><td>2024-01-15</td></tr>
-                            <tr><td>2</td><td>Maria Santos</td><td>maria@email.com</td><td>Ativo</td><td>2024-01-16</td></tr>
-                            <tr><td>3</td><td>Pedro Oliveira</td><td>pedro@email.com</td><td>Inativo</td><td>2024-01-17</td></tr>
+                            <tr>
+                                <td>Site Corporativo</td>
+                                <td>Empresa ABC</td>
+                                <td>Concluído</td>
+                                <td>15/03/2024</td>
+                            </tr>
+                            <tr>
+                                <td>E-commerce</td>
+                                <td>Loja Virtual</td>
+                                <td>Em andamento</td>
+                                <td>20/03/2024</td>
+                            </tr>
+                            <tr>
+                                <td>Sistema Web</td>
+                                <td>Tech Solutions</td>
+                                <td>Planejamento</td>
+                                <td>25/03/2024</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -461,27 +565,21 @@
     <footer class="footer">
         <div class="container">
             <p>&copy; 2024 MeuSite Responsivo. Todos os direitos reservados.</p>
-            <p>Design adaptável para todos os dispositivos</p>
         </div>
     </footer>
 
     <script>
-        // Menu Mobile Toggle
+        // Menu Mobile
         const menuToggle = document.querySelector('.menu-toggle');
         const navMenu = document.querySelector('.nav-menu');
 
         if (menuToggle && navMenu) {
             menuToggle.addEventListener('click', () => {
                 navMenu.classList.toggle('active');
-                
-                // Mudar ícone do menu
-                const isActive = navMenu.classList.contains('active');
-                menuToggle.textContent = isActive ? '✕' : '☰';
+                menuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
             });
 
-            // Fechar menu ao clicar em um link
-            const navLinks = document.querySelectorAll('.nav-menu a');
-            navLinks.forEach(link => {
+            document.querySelectorAll('.nav-menu a').forEach(link => {
                 link.addEventListener('click', () => {
                     navMenu.classList.remove('active');
                     menuToggle.textContent = '☰';
@@ -489,13 +587,11 @@
             });
         }
 
-        // Formulário de Contato
+        // Formulário
         const contactForm = document.getElementById('contactForm');
         if (contactForm) {
             contactForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                
-                // Validação simples
                 const nome = document.getElementById('nome').value;
                 const email = document.getElementById('email').value;
                 const mensagem = document.getElementById('mensagem').value;
@@ -504,50 +600,20 @@
                     alert('Mensagem enviada com sucesso!');
                     contactForm.reset();
                 } else {
-                    alert('Por favor, preencha todos os campos obrigatórios.');
+                    alert('Preencha os campos obrigatórios');
                 }
             });
         }
 
-        // Scroll suave para links âncora
+        // Scroll suave
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
-        });
-
-        // Detectar dispositivo e aplicar classes específicas
-        function detectDevice() {
-            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            const isTablet = /iPad|Android/i.test(navigator.userAgent) && window.innerWidth >= 768 && window.innerWidth <= 1024;
-            
-            if (isMobile) {
-                document.body.classList.add('mobile-device');
-            } else if (isTablet) {
-                document.body.classList.add('tablet-device');
-            } else {
-                document.body.classList.add('desktop-device');
-            }
-        }
-        
-        detectDevice();
-        
-        // Redimensionamento da janela
-        let resizeTimer;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(() => {
-                // Recarregar classes de dispositivo se necessário
-                document.body.classList.remove('mobile-device', 'tablet-device', 'desktop-device');
-                detectDevice();
-            }, 250);
         });
     </script>
 </body>
